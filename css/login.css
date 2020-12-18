@@ -1,0 +1,107 @@
+/* Body définissant le Background */
+body{
+    position: relative;
+    background-image: url("Background.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Ajout de Police */
+@font-face {
+    font-family: "Future_Font";
+    src: url('commando.ttf');
+    /* ou Streamster.ttf */
+}
+
+/* Titre */
+h1{
+    font-family:Future_Font;
+    color: #FB01FE;
+    /*text-shadow: #ffc6ff 1px 1px, #ffc6ff -1px 1px, #ffc6ff -1px -1px, #ffc6ff 1px -1px;*/
+    text-shadow: 0 0 0.8mm #ffc6ff, 0 0 0.8mm #ffc6ff;
+    text-align: center;
+}
+
+/* Entree pseudo */
+.lab_pseudo{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 30px;
+    font-family:Future_Font;
+    color: papayawhip;
+}
+
+.pseudo{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 50px;
+    background-color: #010C13;
+    border: none;
+    color: whitesmoke;
+    padding: 15px 64px;
+    text-align: center;
+    font-family: Future_Font;
+    font-size: 20px;
+}
+
+/* Entree password */
+.lab_password{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 130px;
+    font-family:Future_Font;
+    color: papayawhip;
+}
+
+.password{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 150px;
+    background-color: #010C13;
+    border: none;
+    color: whitesmoke;
+    padding: 15px 64px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: Future_Font;
+    font-size: 16px;
+}
+
+/* Boutton connexion */
+.connexion{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 250px;
+    background-color: #010C13;
+    border: none;
+    color: whitesmoke;
+    padding: 15px 64px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: Future_Font;
+    font-size: 16px;
+}
+
+/* Boutton inscription */
+.inscription{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 350px;
+    background-color: #010C13;
+    border: none;
+    color: whitesmoke;
+    padding: 15px 64px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: Future_Font;
+    font-size: 16px;
+}

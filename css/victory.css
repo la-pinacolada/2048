@@ -1,0 +1,62 @@
+/* Body définissant le Background */
+body{
+    position: relative;
+    background-image: url("Background.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Ajout de Police */
+@font-face {
+    font-family: "Future_Font";
+    src: url('commando.ttf');
+    /* ou Streamster.ttf */
+}
+
+/* Titre */
+h1{
+    font-family:Future_Font;
+    color: #FB01FE;
+    /*text-shadow: #ffc6ff 1px 1px, #ffc6ff -1px 1px, #ffc6ff -1px -1px, #ffc6ff 1px -1px;*/
+    text-shadow: 0 0 0.8mm #ffc6ff, 0 0 0.8mm #ffc6ff;
+    text-align: center;
+}
+
+/* Info sur résultat de la partie */
+.container_resultat{
+    font-family:Future_Font;
+    color: whitesmoke;
+    text-align: center;
+}
+
+/* Boutton de déconnexion */
+.leave{
+    position: absolute;
+    left: 80%;
+    top: 80%;
+    background-color: #010C13;
+    border: none;
+    color: whitesmoke;
+    padding: 15px 64px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: Future_Font;
+    font-size: 16px;
+}
+
+/* Boutton nouvelle partie */
+.reset{
+    position: absolute;
+    left: 80%;
+    top: 90%;
+    background-color: #010C13;
+    border: none;
+    color: whitesmoke;
+    padding: 15px 64px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: Future_Font;
+    font-size: 16px;
+}

@@ -1,62 +1,77 @@
 <?php
-require PATH_METIER.DIRECTORY_SEPARATOR."User.php";
-require_once "SalonException.php";
-require "BDConnexion.php";
+require_once PATH_METIER . DIRECTORY_SEPARATOR . "User.php";
+require_once "BDConnexion.php";
+require_once "BDException.php";
 
 class UserDao{
 
 	// ajouter le(s) attribut(s)
 	private $connexion;
 
-	
-	/** le constructeur de la classe
-	*/
+
+    /**
+     * UserDao constructor.
+     */
 	public function __construct(){
 		$this->connexion=BDConnexion::getInstance()->getConnexion();
 	}
-	
-/**
-méthode qui retourne un tableau de User avec le pseudo renseigné
-@return tabeau de User avec le pseudo renseigné
-@throws TableAccesException si la requête SQL pose problème
-*/
-	public function findAllByPseudo(): array{
-		try{  
-			$statement=$this->connexion->query("SELECT pseudo from utilisateurs;");
-			$users=$statement->fetchAll(PDO::FETCH_CLASS,'User');		
-			return($users);
-		}
-		catch(PDOException $e){
-			throw new SQLException("problème requête SQL sur la table utilisateurs");
 
-			
-		}  
-	}
 
-/**
-méthode qui détermine si un utilisateur avec un certain pseudo est dans la table pseudonyme
-@param $pseudo un pseudo
-@return true si le pseudo passé en pramètre correspond à un utilisateur dans la table utilisateur, false sinon
-@throws TableAccesException si la requête SQL pose problème
-*/
-	public function exists(String $pseudo): bool{
-		try{  
-			$statement = $this->connexion->prepare("select id from utilisateurs where pseudo=?;");
-			$statement->bindParam(1, $pseudoParam);
-			$pseudoParam=$pseudo;
-			$statement->execute();
-			$result=$statement->fetch(PDO::FETCH_ASSOC);
-			if ($result["id"]!=Null){
-				return true;
-			}
-			else{
-				return false;
-			}
-		}
-		catch(PDOException $e){
-			throw new SQLException("problème requête SQL sur la table utilisateurs");
-			
-		}
-	}
+    /**
+    méthode qui détermine si un Joueur avec un certain pseudo est dans la table pseudo
+    @param $pseudo un pseudo
+    @return true si le pseudo passé en pramètre correspond à un utilisateur dans la table utilisateur, false sinon
+    @throws TableAccesException si la requête SQL pose problème
+     */
+    public function exists(string $pseudo): bool{
+        try {
+            $statement = $this->connexion->prepare("select pseudo from Joueur where pseudo=?;");
+            $statement->bindParam(1, $pseudo);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            if ($result["pseudo"]!=Null){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (PDOException $e) {
+            throw new SQLException($e);
+        }
+    }
+
+    /**
+     * Vérifie que le password correspond au pseudo
+     *
+     * @param string $pseudo
+     * @param string $pwd
+     * @return bool
+     * @throws SQLException
+     */
+    public function verifierMdp(string $pseudo, string $pwd): bool{
+        try {
+            $statement = $this->connexion->prepare("select password from Joueur where pseudo=?;");
+            $statement->bindParam(1, $pseudo);
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            return password_verify($pwd, $result["password"]);
+        } catch (PDOException $e) {
+            throw new SQLException("problème requête SQL sur la table Joueur");
+
+        }
+    }
+
+    /**
+     * créer un joueur
+     *
+     * @param string $pseudo
+     * @param string $pwd
+     */
+    public function add(string $pseudo, string $pwd){
+        $req = $this->connexion->prepare("INSERT INTO Joueur(pseudo, password) VALUES (:pseudo, :password)");
+        $req->execute(array(
+            "pseudo" => $pseudo,
+            "password" => $pwd
+        ));
+    }
 }
-?>

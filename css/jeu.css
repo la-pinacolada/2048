@@ -1,56 +1,161 @@
+/* Body définissant le Background */
 body{
-	background-color: #333;
+    background-image: url("Background.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-.presentation{
-	width: 400px;
-	display: flex;
-	margin-left: 40%;
-	margin-bottom: 5px; 
-  	justify-content: center ;
-  	justify-content: space-between;
+
+/* Ajout de Police */
+@font-face {
+    font-family: "Future_Font";
+    src: url('commando.ttf');
 }
 
 h1{
-	color: RoyalBlue;
-	text-align: center;
+    font-family:Future_Font;
+    color: #FB01FE;
+    text-shadow: 0 0 0.8mm #ffc6ff, 0 0 0.8mm #ffc6ff;
+    text-align: center;
+}
+
+/* Partie principale (grid)*/
+.divJeu{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    margin-top: 80px;
+}
+
+/* Partie gauche du grid */
+.règles{
+    font-family:Future_Font;
+    color: whitesmoke;
+    grid-column: 1/3;
+    grid-row: 1;
+    text-align: justify;
+}
+
+.Titre_regle{
+    font-family:Future_Font;
+    color: #FB01FE;
+    text-shadow: 0 0 0.8mm #ffc6ff, 0 0 0.8mm #ffc6ff;
+    text-align: justify;
+}
+
+/* Partie centrale du grid */
+.Jeu{
+    grid-column: 2/3;
+    grid-row: 1;
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.line{
+    width: 100%;
+    height: 25%;
+    box-sizing: border-box;
+    padding: 5px;
+    border: 1px solid #000;
+}
+
+.column{
+    width: 25%;
+    height: 100%;
+    float: left;
+    box-sizing: border-box;
+    background-color: #01081a;
+    border: 1px solid #ffc6ff;
+    text-align: center;
+    font-size: 40px;
+    font-family:Future_Font;
+    color: #ffc6ff;
+}
+
+/* Partie droite du grid */
+.stats{
+    display: flex;
+    grid-column: 3/3;
+    grid-row: 1;
 }
 
 .Score{
-	color: red;
-	text-align: center;
-}
-.divJeu{
-	transform: translateX(40%);
-}
-.Jeu{
-	width: 400px;
-	height: 400px;
- 	
+    font-family:Future_Font;
+    color: #FB01FE;
+    text-shadow: 0 0 0.8mm #ffc6ff, 0 0 0.8mm #ffc6ff;
+    text-align: center;
+    font-size: larger;
+    position: relative;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+
 }
 
-.Grille{
-	width: 100%;
-	height: 100%;
-	box-sizing: border-box;
-	padding: 5px;
-	border: 2px solid #37abde;
+.Best{
+    font-family:Future_Font;
+    color: #FB01FE;
+    text-shadow: 0 0 0.8mm #ffc6ff, 0 0 0.8mm #ffc6ff;
+    text-align: center;
+    font-size: larger;
+    position: relative;
+    top: 50%;
+    left: 35%;
+    transform: translateX(-50%);
 }
 
-.Grille-ligne{
-	width: 100%;
-	height: 25%;
-	box-sizing: border-box;
-	padding: 5px;
-	border: 1px solid #000;
+/* Partie basse (flex)*/
+.controleur{
+    display: flex;
+    grid-row: 2/2;
 }
 
-.Grille-element{
-	width: 25%;
-	height: 100%;
-	float: left;
-	box-sizing: border-box;
-	background-color: RoyalBlue;
-	border: 1px solid #f00;
-	text-align: center;
-	font-size: 40px;
+/* Flèches */
+.controleur_fleche {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Flèche haute */
+.up {
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
+
+/* Flèches basses */
+.left {
+    grid-column: 1/3;
+    grid-row: 2/2;
+}
+
+.down {
+    grid-column: 2/3;
+    grid-row: 2/2;
+}
+
+.right {
+    grid-column: 3/3;
+    grid-row: 2/2;
+}
+
+.leave{
+    position: absolute;
+    left: 80%;
+    top: 80%;
+    background-color: #010C13;
+    border: none;
+    color: whitesmoke;
+    padding: 15px 64px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family: Future_Font;
+    font-size: 16px;
 }
